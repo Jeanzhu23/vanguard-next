@@ -1,4 +1,4 @@
-import { WHOOSH } from "@/lib/site";
+import { WHOOSH, LEAGUE } from "@/lib/site";
 
 export const metadata = {
   title: "Leagues",
@@ -36,6 +36,54 @@ export default function Leagues() {
               Join a league →
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* LEADERBOARD */}
+      <section className="section section-bone">
+        <div className="wrap">
+          <div className="sec-head">
+            <span className="eyebrow">Standings</span>
+            <h2>The leaderboard.</h2>
+            <p>
+              {LEAGUE.active
+                ? `${LEAGUE.season} · ${LEAGUE.week}. Handicap-adjusted, so every team has a real shot.`
+                : "Standings appear here once the season is underway. Sign up and get your name on the board."}
+            </p>
+          </div>
+
+          {LEAGUE.active && LEAGUE.teams.length > 0 ? (
+            <>
+              <div className="lb">
+                {LEAGUE.teams.map((t) => (
+                  <div key={t.pos} className={`lb-row${t.pos === 1 ? " lead" : ""}`}>
+                    <span className="lb-pos">{t.pos}</span>
+                    <span className="lb-name">{t.name}</span>
+                    <span className="lb-pts">{t.pts} pts</span>
+                  </div>
+                ))}
+              </div>
+              <p style={{ marginTop: 20, fontSize: 14, color: "var(--ink-soft)" }}>
+                {LEAGUE.updated}
+                {LEAGUE.standingsUrl && (
+                  <>
+                    {" · "}
+                    <a href={LEAGUE.standingsUrl} target="_blank" rel="noopener"
+                       style={{ color: "var(--gold)", fontWeight: 600 }}>
+                      View full standings →
+                    </a>
+                  </>
+                )}
+              </p>
+            </>
+          ) : (
+            <div className="lb-empty">
+              <p>No active season right now.</p>
+              <a href={WHOOSH.store} target="_blank" rel="noopener" className="btn btn-dark">
+                Join the next league →
+              </a>
+            </div>
+          )}
         </div>
       </section>
     </>

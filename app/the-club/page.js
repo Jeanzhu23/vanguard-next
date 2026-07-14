@@ -126,10 +126,10 @@ export default function TheClub() {
             <h2>Four pillars behind every better round.</h2>
           </div>
           <div className="pillars">
-            <div className="pillar"><h3>Fundamentals</h3><p>Sound mechanics built to last.</p></div>
-            <div className="pillar"><h3>Data-driven coaching</h3><p>TrackMan turns &ldquo;feels&rdquo; into facts.</p></div>
-            <div className="pillar"><h3>Physical training</h3><p>Strength, speed, and mobility behind the swing.</p></div>
-            <div className="pillar"><h3>Mindset &amp; community</h3><p>Mental performance through SP+R, plus a community that keeps you showing up.</p></div>
+            <div className="pillar"><span className="num">01</span><h3>Fundamentals</h3><p>Sound mechanics, built to last a lifetime of golf.</p></div>
+            <div className="pillar"><span className="num">02</span><h3>Data-driven coaching</h3><p>TrackMan turns vague &ldquo;feels&rdquo; into clear, fixable facts.</p></div>
+            <div className="pillar"><span className="num">03</span><h3>Physical training</h3><p>Strength, speed, and mobility to power the swing.</p></div>
+            <div className="pillar"><span className="num">04</span><h3>Mindset &amp; community</h3><p>Mental performance through SP+R, and people who show up.</p></div>
           </div>
           <div style={{ marginTop: 40 }}>
             <a href={WHOOSH.tour} target="_blank" rel="noopener" className="btn btn-primary">Book a tour →</a>{" "}

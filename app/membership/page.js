@@ -28,7 +28,7 @@ export default function Membership() {
         <div className="wrap">
           <span className="eyebrow">Membership</span>
           <h1>Make Vanguard your home course.</h1>
-          <p>Play more for less, book before everyone else, and belong to a community that shows up all year. Billing runs securely on Square.</p>
+          <p>Membership is for players who don&rsquo;t want golf to be seasonal. Ten TrackMan bays, the region&rsquo;s best indoor short game, and a performance gym — with priority booking, better rates, and a training home that&rsquo;s open whenever you are.</p>
         </div>
       </section>
 
