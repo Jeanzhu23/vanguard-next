@@ -92,7 +92,7 @@ export default function Home() {
             <p>A year-round indoor golf home in Greater Boston — see the bays, the short game, and the space in a minute.</p>
           </div>
           <div className="videobox">
-            <video controls playsInline preload="metadata" poster="/img/video-poster.jpg">
+            <video controls playsInline preload="metadata" poster="/img/facility-wide-02.jpg">
               <source src="/video/vanguard-intro.mp4" type="video/mp4" />
             </video>
           </div>
