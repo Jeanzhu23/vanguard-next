@@ -45,6 +45,10 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} {CLUB.name}</span>
+          <span className="footer-legal">
+            <Link href="/terms">Terms &amp; Conditions</Link>
+            <Link href="/policies">Club Policies</Link>
+          </span>
           <span>Mass Golf &amp; USGA member club</span>
         </div>
       </div>
