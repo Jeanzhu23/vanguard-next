@@ -19,7 +19,7 @@ export default function Home() {
           <span className="eyebrow" style={{ color: "var(--gold-bright)" }}>
             Indoor Golf Club · Greater Boston, MA
           </span>
-          <h1>Great golf shouldn&rsquo;t have an <em>off-season.</em></h1>
+          <h1>Great golf shouldn&rsquo;t have an <em>off&#8209;season.</em></h1>
           <p>
             Ten TrackMan bays open around the clock, the region&rsquo;s best complete indoor short
             game, and coaching from the best in the state — a training home for players who want to
@@ -120,7 +120,7 @@ export default function Home() {
       {/* BAND */}
       <section className="band">
         <div className="wrap">
-          <span className="eyebrow" style={{ color: "var(--gold-bright)" }}>Never off-season</span>
+          <span className="eyebrow" style={{ color: "var(--gold-bright)" }}>Never off&#8209;season</span>
           <h2>Your best golf, every month of the year.</h2>
           <p>Start with a tour, or give the game as a gift — Vanguard gift cards and simulator packages make it easy to share.</p>
           <div className="btns">

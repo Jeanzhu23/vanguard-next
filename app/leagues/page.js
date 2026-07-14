@@ -78,7 +78,10 @@ export default function Leagues() {
             </>
           ) : (
             <div className="lb-empty">
-              <p>No active season right now.</p>
+              <p>
+                <b>Between seasons.</b>
+                Sign up now and you&rsquo;ll be on the board when the next league tees off.
+              </p>
               <a href={WHOOSH.store} target="_blank" rel="noopener" className="btn btn-dark">
                 Join the next league →
               </a>
