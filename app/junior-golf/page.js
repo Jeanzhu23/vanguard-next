@@ -1,4 +1,10 @@
+// SAVE AS: app/junior-golf/page.js
+// (full replacement — the only changes from your version are the
+// JuniorPrograms import at the top and <JuniorPrograms /> replacing
+// the old .ladder block with the two tier blurbs)
+
 import Link from "next/link";
+import JuniorPrograms from "@/components/JuniorPrograms";
 
 export const metadata = {
   title: "Junior Golf & Performance Academy",
@@ -50,16 +56,7 @@ export default function Junior() {
             </div>
           </div>
 
-          <div className="ladder">
-            <div className="rung">
-              <h4>Vanguard Foundations</h4>
-              <p>Foundational tier. Fundamentals, coordination, and a love of the game — a flexible 1–2 day weekly schedule. The result: a confident, disciplined base for long-term growth.</p>
-            </div>
-            <div className="rung">
-              <h4>Vanguard Rising Players</h4>
-              <p>Pre-performance tier. Consistency, scoring awareness, course strategy, and progressive strength — 1–2 days a week. The result: readiness for higher standards and first competition.</p>
-            </div>
-          </div>
+          <JuniorPrograms />
 
           <div className="sec-head" style={{ marginTop: 56 }}>
             <span className="eyebrow">The Performance Academy</span>
