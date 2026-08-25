@@ -4,10 +4,10 @@ import { GIFT_CARDS } from "@/lib/site";
 const EXPLORE = [
   { href: "/the-club", title: "The Club", copy: "Ten TrackMan bays, the region's best indoor short game, and a performance gym." },
   { href: "/membership", title: "Membership", copy: "Year-round access, better rates, priority booking." },
-  { href: "/lessons", title: "Lessons", copy: "One-on-one with the top-ranked coach in the state." },
-  { href: "/leagues", title: "Leagues", copy: "Weekly, handicap-adjusted competition for every level." },
+  { href: "/lessons", title: "Lessons", copy: "One-on-one with the top-ranked coaches in the state." },
+  { href: "/leagues", title: "Leagues", copy: "Weekly leagues to keep your competitive juices flowing." },
   { href: "/junior-golf", title: "Junior Golf", copy: "A structured pathway from first swings to college-bound." },
-  { href: "/events", title: "Events", copy: "Team outings, birthdays, and corporate nights." },
+  { href: "/events", title: "Events", copy: "Team outings, birthdays, and corporate events." },
 ];
 
 export default function Home() {
