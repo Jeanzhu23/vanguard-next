@@ -25,15 +25,19 @@ export default function JuniorPrograms() {
           border:1px solid var(--gold);
           background:rgba(255,255,255,.04);
           border-radius:16px;
-          padding:32px 30px;
+          padding:40px 32px;
           position:relative;overflow:hidden;
+          text-align:center;
         }
+        .jrp-banner::before,
         .jrp-banner::after{
-          content:"\\25E4";position:absolute;right:-16px;bottom:-48px;
-          font-size:170px;line-height:1;color:rgba(255,255,255,.05);pointer-events:none;
+          content:"\\25E4";position:absolute;
+          font-size:150px;line-height:1;color:rgba(255,255,255,.05);pointer-events:none;
         }
-        .jrp-banner h2{margin-top:12px;max-width:22ch;line-height:1.12}
-        .jrp-banner > p{margin-top:12px;color:var(--bone-dim);max-width:58ch}
+        .jrp-banner::before{left:-14px;top:-44px;transform:rotate(180deg)}
+        .jrp-banner::after{right:-14px;bottom:-44px}
+        .jrp-banner h2{margin:12px auto 0;line-height:1.12;font-size:clamp(24px,3.4vw,38px)}
+        .jrp-banner > p{margin:14px auto 0;color:var(--bone-dim);max-width:62ch}
 
         /* Program cards */
         .jrp-cards{
@@ -56,6 +60,7 @@ export default function JuniorPrograms() {
           text-transform:uppercase;color:var(--bone-dim);
         }
         .jrp-card h3{margin-top:6px}
+        .jrp-desc{margin-top:8px;font-size:14.5px;color:var(--bone-dim);line-height:1.55}
         .jrp-price{margin-top:12px}
         .jrp-price .jrp-from{
           font-size:12px;color:var(--bone-dim);
@@ -76,19 +81,24 @@ export default function JuniorPrograms() {
         .jrp-grow{flex:1}
         .jrp-card .btn{margin-top:20px;text-align:center}
 
-        /* Membership strip */
+        /* Membership perks */
         .jrp-strip{
           margin-top:24px;background:rgba(255,255,255,.04);
           border:1px solid rgba(255,255,255,.10);
-          border-radius:14px;padding:18px 24px;
-          display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;font-size:14.5px;
+          border-radius:14px;padding:26px 28px;
         }
-        .jrp-strip .jrp-lead{
-          font-weight:700;color:var(--gold);letter-spacing:.08em;
-          text-transform:uppercase;font-size:12px;
+        .jrp-strip-head{
+          text-align:center;font-weight:700;color:var(--gold);
+          letter-spacing:.1em;text-transform:uppercase;font-size:12px;
         }
-        .jrp-strip span{color:var(--bone-dim)}
-        .jrp-strip b{color:inherit;filter:brightness(1.35)}
+        .jrp-perks{
+          display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+          gap:20px;margin-top:20px;text-align:center;
+        }
+        .jrp-perk-label{font-weight:700;font-size:15px}
+        .jrp-perk-caption{
+          margin-top:4px;font-size:13px;color:var(--bone-dim);line-height:1.5;
+        }
         .jrp-footnote{
           margin-top:14px;font-size:13px;color:var(--bone-dim);text-align:center;
         }
@@ -111,6 +121,9 @@ export default function JuniorPrograms() {
             )}
             <span className="jrp-pathway">{program.pathway}</span>
             <h3>{program.name}</h3>
+            {program.description && (
+              <p className="jrp-desc">{program.description}</p>
+            )}
             <div className="jrp-price">
               <div className="jrp-from">{program.priceLabel}</div>
               <div className="jrp-amt">
@@ -133,12 +146,15 @@ export default function JuniorPrograms() {
       </div>
 
       <div className="jrp-strip">
-        <span className="jrp-lead">◤ Junior membership includes</span>
-        {juniorMembershipPerks.map((perk) => (
-          <span key={perk}>
-            <b>{perk}</b>
-          </span>
-        ))}
+        <div className="jrp-strip-head">Every Junior Pathway membership includes</div>
+        <div className="jrp-perks">
+          {juniorMembershipPerks.map((perk) => (
+            <div className="jrp-perk" key={perk.label}>
+              <div className="jrp-perk-label">{perk.label}</div>
+              <div className="jrp-perk-caption">{perk.caption}</div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <p className="jrp-footnote">{juniorProgramsFootnote}</p>
