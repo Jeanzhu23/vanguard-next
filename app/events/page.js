@@ -81,12 +81,19 @@ export default function Events() {
                       <span className="cal-mon">{month}</span>
                       <span className="cal-day">{day}</span>
                     </div>
-                    <div className="cal-body">
+                  <div className="cal-body">
                       <span className="cal-tag">{e.tag}</span>
                       <h3>{e.title}</h3>
                       <p>{e.desc}</p>
+                      {e.link && (
+                       <p style={{ marginTop: 10 }}>
+                          <Link href={e.link} style={{ color: "var(--gold)", fontWeight: 600 }}>
+                            {e.linkLabel || "Register →"}
+                          </Link>
+                        </p>
+                      )}
                     </div>
-                    <div className="cal-time">{e.time}</div>
+                  <div className="cal-time">{e.time}</div>
                   </div>
                 );
               })}
