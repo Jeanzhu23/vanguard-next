@@ -199,17 +199,19 @@ em{font-style:italic;color:var(--gold)}
 @media(max-width:720px){.packs{grid-template-columns:1fr}}
 
 /* coaches */
-.coaches{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.coaches{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .coach{background:#fff;border:1px solid rgba(15,31,24,.1);border-radius:8px;padding:24px;
   display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
 .coach:hover{transform:translateY(-4px);border-color:var(--gold);
   box-shadow:0 24px 44px -26px rgba(0,0,0,.35)}
+.coach .photo{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:top;border-radius:6px;margin-bottom:16px}
 .coach h3{font-size:20px;color:var(--green-900)}
 .coach .role{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--gold);margin:4px 0 12px}
 .coach p{font-size:14px;color:var(--ink-soft);margin:0 0 20px;flex:1}
 .coach .btn{align-self:stretch;justify-content:center;margin-top:auto}
-@media(max-width:860px){.coaches{grid-template-columns:1fr}}
+@media(max-width:1000px){.coaches{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.coaches{grid-template-columns:1fr}}
 
 /* junior ladder */
 .ladder{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
