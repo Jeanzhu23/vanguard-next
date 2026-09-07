@@ -37,7 +37,11 @@ export default function Lessons() {
           </div>
 
           <div className="sec-head"><span className="eyebrow">Our coaches</span><h2>Coaching, backed by data.</h2></div>
-          <div className="coaches">
+          <div className="coaches">              
+            <div key={c.name} className="coach">
+                             <div key={c.name} className="coach">
+                <img className="photo" src={c.image} alt={c.name} />
+                <h3>{c.name}</h3>
             {COACHES.map((c) => (
               <div key={c.name} className="coach">
                 <h3>{c.name}</h3>
