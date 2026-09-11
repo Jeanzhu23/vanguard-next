@@ -124,13 +124,19 @@ export default function JuniorPrograms() {
             {program.description && (
               <p className="jrp-desc">{program.description}</p>
             )}
-            <div className="jrp-price">
-              <div className="jrp-from">{program.priceLabel}</div>
-              <div className="jrp-amt">
-                {program.price}
-                <span className="jrp-per"> {program.per}</span>
-              </div>
-              <div className="jrp-cond">{program.condition}</div>
+                 <div className="jrp-price">
+              {program.price && (
+                <>
+                  <div className="jrp-from">{program.priceLabel}</div>
+                  <div className="jrp-amt">
+                    {program.price}
+                    <span className="jrp-per"> {program.per}</span>
+                  </div>
+                </>
+              )}
+              {program.condition && (
+                <div className="jrp-cond">{program.condition}</div>
+              )}
             </div>
             <ul>
               {program.features.map((feature) => (
