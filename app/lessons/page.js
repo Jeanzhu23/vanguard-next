@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { WHOOSH, COACHES } from "@/lib/site";
 
 export const metadata = {
@@ -28,16 +29,17 @@ export default function Lessons() {
               <p style={{ color: "var(--bone-dim)" }}>
                 The best first step, whether you&rsquo;re new to the game or chasing lower scores.
                 Measure exactly what your swing is doing today, pinpoint your biggest opportunities,
-                and leave with a plan.
+                and leave with a plan. Evaluations are scheduled directly with our coaching team &mdash;
+                submit the form and we&rsquo;ll reach out with available times.
               </p>
-              <a href={WHOOSH.lessons} target="_blank" rel="noopener" className="btn btn-primary" style={{ marginTop: 8 }}>
-                Book a Swing Evaluation →
-              </a>
+              <Link href="/lessons/evaluation" className="btn btn-primary" style={{ marginTop: 8 }}>
+                Request a Swing Evaluation →
+              </Link>
             </div>
           </div>
 
           <div className="sec-head"><span className="eyebrow">Our coaches</span><h2>Coaching, backed by data.</h2></div>
-                    <div className="coaches">
+          <div className="coaches">
             {COACHES.map((c) => (
               <div key={c.name} className="coach">
                 <img className="photo" src={c.image} alt={c.name} />
