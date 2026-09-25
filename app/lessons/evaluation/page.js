@@ -15,6 +15,27 @@ export default function SwingEvaluation() {
           <span className="eyebrow">Swing Evaluation · $99</span>
           <h2>Request a Swing Evaluation.</h2>
           <p>
+            The Swing Evaluation
+
+cd ~/Desktop/vanguard-next
+cat > app/lessons/evaluation/page.js << 'EOF'
+import Link from "next/link";
+import { FORMS } from "@/lib/site";
+
+export const metadata = {
+  title: "Request a Swing Evaluation",
+  description:
+    "Request a $99 Swing Evaluation at Vanguard Golf Club, Dedham MA. Tell us about your game and our coaching team will contact you to schedule your TrackMan session.",
+};
+
+export default function SwingEvaluation() {
+  return (
+    <section className="section section-dark">
+      <div className="wrap narrow">
+        <div className="sec-head center">
+          <span className="eyebrow">Swing Evaluation · $99</span>
+          <h2>Request a Swing Evaluation.</h2>
+          <p>
             The Swing Evaluation is a $99, one-time session with a coach and TrackMan. We measure
             what your swing is doing today, pinpoint your biggest opportunities, and build a clear
             plan. Tell us a little about your game and we&rsquo;ll be in touch to schedule a time.
@@ -52,20 +73,9 @@ export default function SwingEvaluation() {
               <input id="escore" type="text" name="handicap" placeholder="e.g. 12, or shoots ~95" />
             </div>
           </div>
-          <div className="row">
-            <div>
-              <label htmlFor="ecoach">Coach preference</label>
-              <select id="ecoach" name="coach">
-                <option>No preference — please advise</option>
-                <option>Shawn Hester</option>
-                <option>Jonah Dupuis</option>
-                <option>Rick McCready</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="eavail">Best days / times</label>
-              <input id="eavail" type="text" name="availability" placeholder="e.g. weekday evenings, weekends" />
-            </div>
+          <div>
+            <label htmlFor="eavail">Best days / times</label>
+            <input id="eavail" type="text" name="availability" placeholder="e.g. weekday evenings, weekends" />
           </div>
           <div>
             <label htmlFor="egoals">Goals &amp; anything else we should know</label>
