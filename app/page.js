@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { GIFT_CARDS } from "@/lib/site";
-import OpenHouseBanner from "@/components/OpenHouseBanner";
 
 const EXPLORE = [
   { href: "/the-club", title: "The Club", copy: "Ten TrackMan bays, the region's best indoor short game, and a performance gym." },
@@ -14,7 +13,7 @@ const EXPLORE = [
 export default function Home() {
   return (
     <>
-      <OpenHouseBanner />
+    
 
       {/* HERO */}
       <section className="hero">
