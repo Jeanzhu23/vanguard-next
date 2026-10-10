@@ -45,6 +45,34 @@ export default function Leagues() {
         </div>
       </section>
 
+      {/* PGA JR. LEAGUE — COMING SOON */}
+      <section className="section section-cream">
+        <div className="wrap grid-2 feature rev">
+          <div className="feature-img" style={{ aspectRatio: "4/5", maxWidth: 460, margin: "0 auto" }}>
+            <img src="/img/events/pga-jr-league.jpg" alt="Two junior golfers running down the fairway" />
+          </div>
+          <div>
+            <span className="tag">Coming soon</span>
+            <h3 style={{ marginTop: 14 }}>PGA Jr. League at Vanguard.</h3>
+            <p style={{ color: "var(--ink-soft)" }}>
+              Team golf for kids, the way it should be: numbered jerseys, a two-person scramble
+              format that takes the pressure off, and a season of matches against other teams.
+              Our Vanguard team will be coached by <b>Preston Renfrow, PGA Golf Coach</b>, and
+              will train and play right here on TrackMan, all year round.
+            </p>
+            <ul>
+              <li>Boys and girls, all skill levels &mdash; beginners welcome</li>
+              <li>Team scramble format: every player contributes, no one plays alone</li>
+              <li>Weekly practice and matches, led by a PGA coach</li>
+              <li>Indoor season, so the weather never cancels a match</li>
+            </ul>
+            <Link href="/leagues/signup" className="btn btn-dark" style={{ marginTop: 12 }}>
+              Get on the list →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* LEADERBOARD */}
       <section className="section section-bone">
         <div className="wrap">
