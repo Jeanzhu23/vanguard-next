@@ -47,32 +47,28 @@ export default function Leagues() {
 
       {/* MEN'S LEAGUE — COMING SOON */}
       <section className="section section-dark">
-        <div className="wrap">
-          <div className="feature-img" style={{ aspectRatio: "16/9", marginBottom: 44 }}>
-            <img src="/img/events/mens-league.jpg" alt="Vanguard Golf Club Men's League — Play, Compete, Connect" />
+        <div className="wrap grid-2 feature">
+          <div className="feature-img" style={{ aspectRatio: "4/5", maxWidth: 460, margin: "0 auto" }}>
+            <img src="/img/events/mens-league.jpg" alt="Men's league night in a Vanguard TrackMan bay" />
           </div>
-          <div className="grid-2 feature" style={{ alignItems: "start" }}>
-            <div>
-              <span className="tag">Coming soon · Launching this season</span>
-              <h3 style={{ marginTop: 14 }}>Men&rsquo;s League. Bragging rights, every week.</h3>
-              <p style={{ color: "var(--bone-dim)" }}>
-                Grab a partner, pick your night, and go to war on TrackMan. Handicaps level the field,
-                so the scratch player and the weekend hack both have a real shot at the top of the board.
-                Weekly prizes, a live leaderboard, and a season-ending championship with your name on
-                the line. Cold drinks, loud bays, and a lot of trash talk.
-              </p>
-              <Link href="/leagues/signup" className="btn btn-primary" style={{ marginTop: 12 }}>
-                Get on the list →
-              </Link>
-            </div>
-            <div>
-              <ul style={{ marginTop: 0 }}>
-                <li>2-person teams &mdash; sign up solo and we&rsquo;ll match you</li>
-                <li>Net &amp; Gross leaderboards: your best weeks count</li>
-                <li>Weekly prizes, plus the Vanguard Championship to close the season</li>
-                <li>Open 24/7, so make-up rounds fit your schedule</li>
-              </ul>
-            </div>
+          <div>
+            <span className="tag">Coming soon · Launching this season</span>
+            <h3 style={{ marginTop: 14 }}>Men&rsquo;s League. Bragging rights, every week.</h3>
+            <p style={{ color: "var(--bone-dim)" }}>
+              Grab a partner, pick your night, and go to war on TrackMan. Handicaps level the field,
+              so the scratch player and the weekend hack both have a real shot at the top of the board.
+              Weekly prizes, a live leaderboard, and a season-ending championship with your name on
+              the line. Cold drinks, loud bays, and a lot of trash talk.
+            </p>
+            <ul>
+              <li>2-person teams &mdash; sign up solo and we&rsquo;ll match you</li>
+              <li>Net &amp; Gross leaderboards: your best weeks count</li>
+              <li>Weekly prizes, plus the Vanguard Championship to close the season</li>
+              <li>Open 24/7, so make-up rounds fit your schedule</li>
+            </ul>
+            <Link href="/leagues/signup" className="btn btn-primary" style={{ marginTop: 12 }}>
+              Get on the list →
+            </Link>
           </div>
         </div>
       </section>
