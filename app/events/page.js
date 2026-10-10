@@ -81,7 +81,7 @@ export default function Events() {
                     <div className="ev-media">
                       {e.image ? (
                         <a href={e.image} target="_blank" rel="noopener" title="View full size">
-                          <img src={e.image} alt={e.title} loading="lazy" />
+                          <img src={e.image} alt={e.title} loading="lazy" className={e.fit === "contain" ? "contain" : undefined} />
                         </a>
                       ) : (
                         <div className="ev-media-fallback" />

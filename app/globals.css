@@ -364,6 +364,7 @@ em{font-style:italic;color:var(--gold)}
 .ev-media{position:relative;aspect-ratio:3/4;background:var(--green-900);overflow:hidden}
 .ev-media a{display:block;height:100%}
 .ev-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.ev-media img.contain{object-fit:contain;background:var(--green-950)}
 .ev-media-fallback{position:absolute;inset:0;
   background:linear-gradient(160deg,var(--green-800),var(--green-950))}
 .ev-when{display:flex;align-items:center;gap:14px}
