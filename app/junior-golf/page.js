@@ -38,10 +38,10 @@ export default function Junior() {
               <h3 style={{ marginTop: 14 }}>Small groups. Real attention.</h3>
               <p style={{ color: "var(--bone-dim)" }}>{juniorHero.intro}</p>
               <ul>
-                <li>Coach-led sessions in small groups</li>
-                <li>TrackMan feedback on every swing</li>
-                <li>PuttView and SAM PuttStudio short-game training</li>
-                <li>TPI strength &amp; movement training</li>
+                <li>The best coaches in the state, teaching with heart</li>
+                <li>Best-in-class technology: TrackMan, PuttView &amp; SAM PuttStudio</li>
+                <li>Every lesson comes with follow-up and a practice plan</li>
+                <li>Small groups, so no junior gets lost in the crowd</li>
               </ul>
             </div>
           </div>
