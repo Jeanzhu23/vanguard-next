@@ -1,4 +1,5 @@
-import { WHOOSH, LEAGUE } from "@/lib/site";
+import Link from "next/link";
+import { LEAGUE } from "@/lib/site";
 
 export const metadata = {
   title: "Leagues",
@@ -87,9 +88,9 @@ export default function Leagues() {
                 <b>Between seasons.</b>
                 Sign up now and you&rsquo;ll be on the board when the next league tees off.
               </p>
-              <a href={WHOOSH.store} target="_blank" rel="noopener" className="btn btn-dark">
+              <Link href="/leagues/signup" className="btn btn-dark">
                 Join the next league →
-              </a>
+              </Link>
             </div>
           )}
         </div>
