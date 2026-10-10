@@ -27,7 +27,7 @@ export default function Contact() {
                 <label htmlFor="interested">I&rsquo;m interested in</label>
                 <select id="interested" name="interested_in">
                   <option>General question</option><option>Membership</option>
-                  <option>Lessons / Swing Evaluation</option><option>Junior Golf</option>
+                  <option>Lessons</option><option>Junior Golf</option>
                   <option>Leagues</option><option>Events</option>
                 </select>
               </div>
