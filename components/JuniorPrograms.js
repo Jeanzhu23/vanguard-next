@@ -257,9 +257,9 @@ export default function JuniorPrograms() {
               )}
             </div>
             <div className="jr-grow" />
-            <a href={`#${p.id}`} className="btn btn-ghost">
-              Learn more →
-            </a>
+            <Link href={p.cta.href} className="btn btn-ghost">
+              {p.cta.label}
+            </Link>
           </div>
         ))}
       </div>
