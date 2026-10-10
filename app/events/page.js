@@ -70,31 +70,43 @@ export default function Events() {
               <Link href="/contact" style={{ color: "var(--gold)" }}>get in touch</Link> to plan your own.
             </p>
           ) : (
-            <div className="cal">
-              {EVENTS.map((e) => {
+            <div className="ev-grid">
+              {[...EVENTS].sort((a, b) => a.date.localeCompare(b.date)).map((e) => {
                 const d = new Date(e.date + "T00:00:00");
                 const month = d.toLocaleString("en-US", { month: "short" });
                 const day = d.getDate();
+                const external = e.link && e.link.startsWith("http");
                 return (
-                  <div key={e.date + e.title} className="cal-row">
-                    <div className="cal-date">
-                      <span className="cal-mon">{month}</span>
-                      <span className="cal-day">{day}</span>
+                  <article key={e.date + e.title} className="ev-card">
+                    <div className="ev-media">
+                      {e.image ? (
+                        <a href={e.image} target="_blank" rel="noopener" title="View full size">
+                          <img src={e.image} alt={e.title} loading="lazy" />
+                        </a>
+                      ) : (
+                        <div className="ev-media-fallback" />
+                      )}
+                      <span className="ev-tag">{e.tag}</span>
                     </div>
-                  <div className="cal-body">
-                      <span className="cal-tag">{e.tag}</span>
+                    <div className="ev-body">
+                      <div className="ev-when">
+                        <div className="ev-date">
+                          <span className="ev-mon">{month}</span>
+                          <span className="ev-day">{day}</span>
+                        </div>
+                        <div className="ev-time">{e.time}</div>
+                      </div>
                       <h3>{e.title}</h3>
                       <p>{e.desc}</p>
                       {e.link && (
-                       <p style={{ marginTop: 10 }}>
-                          <Link href={e.link} style={{ color: "var(--gold)", fontWeight: 600 }}>
-                            {e.linkLabel || "Register →"}
-                          </Link>
-                        </p>
+                        <Link href={e.link} className="ev-link"
+                          target={external ? "_blank" : undefined}
+                          rel={external ? "noopener" : undefined}>
+                          {e.linkLabel || "Register →"}
+                        </Link>
                       )}
                     </div>
-                  <div className="cal-time">{e.time}</div>
-                  </div>
+                  </article>
                 );
               })}
             </div>
