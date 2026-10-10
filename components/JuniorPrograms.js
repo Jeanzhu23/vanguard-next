@@ -180,12 +180,14 @@ export default function JuniorPrograms() {
           text-transform:uppercase;color:var(--bone-dim);
         }
         .jr-fact-v{font-weight:700;font-size:17px;margin-top:3px}
-        .jr-table{margin-top:4px}
+        .jr-table{margin-top:22px}
+        .jr-side .jr-table:first-child{margin-top:0}
         .jr-row{
-          display:flex;justify-content:space-between;gap:12px;padding:9px 0;
-          border-top:1px solid rgba(255,255,255,.1);font-size:15px;
+          display:grid;grid-template-columns:auto 1fr;gap:16px;padding:9px 0;
+          border-top:1px solid rgba(255,255,255,.1);font-size:15px;align-items:baseline;
         }
-        .jr-row span{color:var(--bone-dim)}
+        .jr-row span{color:var(--bone-dim);white-space:nowrap}
+        .jr-row strong{text-align:right}
         .jr-note{margin-top:22px;font-size:13.5px;color:var(--bone-dim);line-height:1.5}
         .jr-side .btn{margin-top:20px;width:100%;justify-content:center}
 
