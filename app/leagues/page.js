@@ -19,21 +19,26 @@ export default function Leagues() {
 
       <section className="section section-green">
         <div className="wrap grid-2 feature">
-          <div className="feature-img"><img src="/img/leagues-photo.jpg" alt="League play at Vanguard" /></div>
+          <div className="feature-img" style={{ aspectRatio: "2/3", maxWidth: 460, margin: "0 auto" }}>
+            <img src="/img/events/womens-league.jpg" alt="Women's Simulator Golf League — Girls' Night Out" />
+          </div>
           <div>
-            <h3>Play the season, not just the round.</h3>
+            <span className="tag">Now enrolling · Starts Monday, Oct 26</span>
+            <h3 style={{ marginTop: 14 }}>Women&rsquo;s Simulator Golf League.</h3>
             <p style={{ color: "var(--bone-dim)" }}>
-              Handicaps level the field, so every team has a real shot — and with 24/7 access, you
-              play on your schedule.
+              Girls&rsquo; night out, with golf. Four Monday evenings of fun, social play on TrackMan
+              with Coach Rick McCready &mdash; great golf, cold drinks, new friends, and lots of laughs.
+              All levels welcome.
             </p>
             <ul>
-              <li>2-person teams — sign up solo and we&rsquo;ll match you</li>
-              <li>Net &amp; Gross leaderboards, your best weeks count</li>
-              <li>Open, Women&rsquo;s, and Junior divisions</li>
-              <li>Weekly prizes and a season-ending Vanguard Championship</li>
+              <li>Mondays, Oct 26 &ndash; Nov 16 &middot; 6:00 &ndash; 7:30 PM</li>
+              <li>$25 per person, per week</li>
+              <li>BYO &mdash; bring your favorite beverages</li>
+              <li>Play &middot; Connect &middot; Compete</li>
             </ul>
-            <a href={WHOOSH.store} target="_blank" rel="noopener" className="btn btn-primary" style={{ marginTop: 12 }}>
-              Join a league →
+            <a href="mailto:rick@vanguardgolfclub.com?subject=Women%27s%20Simulator%20Golf%20League%20sign-up"
+               className="btn btn-primary" style={{ marginTop: 12 }}>
+              Email Rick to sign up →
             </a>
           </div>
         </div>
