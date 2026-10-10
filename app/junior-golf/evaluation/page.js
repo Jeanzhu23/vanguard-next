@@ -80,11 +80,10 @@ export default function Evaluation() {
             <div>
               <label htmlFor="jprog">Program of interest</label>
               <select id="jprog" name="program">
-                <option>Not sure — please advise</option>
-                <option>Vanguard Foundations</option>
-                <option>Vanguard Rising Players</option>
-                <option>Performance Academy — Development</option>
-                <option>Performance Academy — Elite</option>
+                <option>Not sure — let a coach recommend</option>
+                <option>Beginner Program</option>
+                <option>Intermediate Program</option>
+                <option>Elite Program</option>
               </select>
             </div>
             <div>

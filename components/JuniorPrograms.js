@@ -1,169 +1,319 @@
-// SAVE AS: components/JuniorPrograms.js
-// (replaces the earlier version I gave you)
+// components/JuniorPrograms.js
 //
-// This renders INSIDE your existing dark section on /junior-golf,
-// replacing the old .ladder block. It reuses your site's own classes
-// (.card, .eyebrow, .btn btn-primary) so it matches the rest of the
-// page exactly. All text, prices, and perks live in lib/site.js.
+// Everything below the hero on /junior-golf. Renders inside the page's
+// dark section and reuses the site's own classes (.card, .eyebrow,
+// .btn btn-primary). All copy, prices, and schedules live in lib/site.js
+// — edit there, not here.
 
 import Link from "next/link";
 import {
-  juniorEnrollment,
+  CLUB,
+  juniorPathway,
   juniorPrograms,
-  juniorMembershipPerks,
-  juniorProgramsFootnote,
+  juniorMembership,
+  juniorGetStarted,
 } from "@/lib/site";
+
+function Facts({ facts }) {
+  return (
+    <div className="jr-facts">
+      {facts.map(([k, v]) => (
+        <div className="jr-fact" key={k}>
+          <div className="jr-fact-k">{k}</div>
+          <div className="jr-fact-v">{v}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Table({ title, rows }) {
+  return (
+    <div className="jr-table">
+      <div className="jr-sub">{title}</div>
+      {rows.map(([a, b]) => (
+        <div className="jr-row" key={a}>
+          <span>{a}</span>
+          <strong>{b}</strong>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function List({ title, items }) {
+  return (
+    <div>
+      {title && <div className="jr-sub">{title}</div>}
+      <ul className="jr-list">
+        {items.map((it) => (
+          <li key={it}>{it}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Program({ p }) {
+  return (
+    <article className="jr-program" id={p.id}>
+      <div className="jr-program-head">
+        <span className="eyebrow">
+          Level {p.level} · {p.name}
+          {p.label ? ` · ${p.label}` : ""}
+        </span>
+        <h2>{p.headline}</h2>
+        <p className="jr-tagline">{p.subtagline}</p>
+        <p className="jr-intro">{p.intro}</p>
+      </div>
+
+      <div className="jr-program-body">
+        <div className="jr-main">
+          {p.whoFor && <List title="Who this is for" items={p.whoFor} />}
+
+          {p.weekly && (
+            <div>
+              <div className="jr-sub">Every week</div>
+              <ul className="jr-list jr-weekly">
+                {p.weekly.map(([t, d]) => (
+                  <li key={t}>
+                    <strong>{t}</strong> — {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {p.structure && <List title={p.structureTitle} items={p.structure} />}
+
+          {p.experience && (
+            <List title={p.experienceTitle || "What players experience"} items={p.experience} />
+          )}
+
+          <List title={p.gainsTitle} items={p.gains} />
+        </div>
+
+        <aside className="jr-side">
+          {p.facts && <Facts facts={p.facts} />}
+          {p.schedule && <Table title={p.schedule.title} rows={p.schedule.rows} />}
+          {p.nextBlock && <Table title={p.nextBlock.title} rows={p.nextBlock.rows} />}
+          {p.note && <p className="jr-note">{p.note}</p>}
+          <Link href={p.cta.href} className="btn btn-primary">
+            {p.cta.label}
+          </Link>
+        </aside>
+      </div>
+    </article>
+  );
+}
 
 export default function JuniorPrograms() {
   return (
-    <div className="jrp-block">
+    <div className="jr">
       <style>{`
-        .jrp-block{margin-top:44px}
+        .jr .jr-sub{
+          font-family:var(--font-mono);font-size:11.5px;letter-spacing:.18em;
+          text-transform:uppercase;color:var(--gold-bright);margin:0 0 10px;
+        }
+        .jr-main > div + div{margin-top:30px}
 
-        /* Back-to-school banner */
-        .jrp-banner{
-          border:1px solid var(--gold);
-          background:rgba(255,255,255,.04);
-          border-radius:16px;
-          padding:40px 32px;
-          position:relative;overflow:hidden;
-          text-align:center;
+        /* ── Pathway overview cards ── */
+        .jr-cards{
+          display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px;
         }
-        .jrp-banner::before,
-        .jrp-banner::after{
-          content:"\\25E4";position:absolute;
-          font-size:150px;line-height:1;color:rgba(255,255,255,.05);pointer-events:none;
-        }
-        .jrp-banner::before{left:-14px;top:-44px;transform:rotate(180deg)}
-        .jrp-banner::after{right:-14px;bottom:-44px}
-        .jrp-banner h2{margin:12px auto 0;line-height:1.12;font-size:clamp(24px,3.4vw,38px)}
-        .jrp-banner > p{margin:14px auto 0;color:var(--bone-dim);max-width:62ch}
-
-        /* Program cards */
-        .jrp-cards{
-          display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-          gap:20px;margin-top:24px;
-        }
-        .jrp-card{position:relative;display:flex;flex-direction:column}
-        .jrp-card.jrp-featured{
-          border-color:var(--gold);
-          box-shadow:0 0 0 1px var(--gold);
-        }
-        .jrp-badge{
-          position:absolute;top:-12px;left:22px;
-          font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-          background:var(--gold);color:var(--green-950,#0e241a);
-          border-radius:999px;padding:4px 12px;
-        }
-        .jrp-pathway{
-          font-size:11px;font-weight:700;letter-spacing:.18em;
+        .jr-card{display:flex;flex-direction:column;position:relative}
+        .jr-level{
+          font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;
           text-transform:uppercase;color:var(--bone-dim);
         }
-        .jrp-card h3{margin-top:6px}
-        .jrp-desc{margin-top:8px;font-size:14.5px;color:var(--bone-dim);line-height:1.55}
-        .jrp-price{margin-top:12px}
-        .jrp-price .jrp-from{
-          font-size:12px;color:var(--bone-dim);
-          text-transform:uppercase;letter-spacing:.08em;
+        .jr-card h3{margin-top:8px}
+        .jr-card .jr-tag{
+          margin-top:6px;font-size:13px;letter-spacing:.04em;color:var(--gold-bright);
         }
-        .jrp-price .jrp-amt{font-size:36px;font-weight:700;line-height:1.15}
-        .jrp-price .jrp-per{font-size:15px;font-weight:400;color:var(--bone-dim)}
-        .jrp-price .jrp-cond{font-size:13px;color:var(--bone-dim);margin-top:4px}
-        .jrp-card ul{
-          list-style:none;margin:16px 0 0;padding:14px 0 0;
-          border-top:1px solid rgba(255,255,255,.12);
+        .jr-card .jr-desc{margin-top:12px;font-size:15px;color:var(--bone-dim);line-height:1.55}
+        .jr-card .jr-price{
+          margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);
         }
-        .jrp-card li{padding:5px 0 5px 22px;position:relative;font-size:15px}
-        .jrp-card li::before{
-          content:"\\25E4";position:absolute;left:0;top:6px;
-          font-size:10px;color:var(--gold);
+        .jr-card .jr-amt{font-size:32px;font-weight:700;line-height:1.1}
+        .jr-card .jr-per{font-size:15px;font-weight:400;color:var(--bone-dim)}
+        .jr-card .jr-quote{font-size:17px;font-weight:600;color:var(--bone)}
+        .jr-grow{flex:1}
+        .jr-card .btn{margin-top:20px;text-align:center}
+        .jr-pathnote{
+          margin-top:18px;font-size:14px;color:var(--bone-dim);text-align:center;
         }
-        .jrp-grow{flex:1}
-        .jrp-card .btn{margin-top:20px;text-align:center}
 
-        /* Membership perks */
-        .jrp-strip{
-          margin-top:24px;background:rgba(255,255,255,.04);
-          border:1px solid rgba(255,255,255,.10);
-          border-radius:14px;padding:26px 28px;
+        /* ── Program detail sections ── */
+        .jr-program{
+          margin-top:72px;padding-top:56px;border-top:1px solid rgba(255,255,255,.12);
         }
-        .jrp-strip-head{
-          text-align:center;font-weight:700;color:var(--gold);
-          letter-spacing:.1em;text-transform:uppercase;font-size:12px;
+        .jr-program-head{max-width:820px}
+        .jr-program-head h2{font-size:clamp(28px,4vw,44px);margin-top:14px}
+        .jr-tagline{margin-top:10px;font-size:17px;color:var(--gold-bright);font-style:italic}
+        .jr-intro{margin-top:16px;font-size:17px;color:var(--bone-dim)}
+        .jr-program-body{
+          display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);
+          gap:clamp(28px,4vw,56px);margin-top:36px;align-items:start;
         }
-        .jrp-perks{
-          display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-          gap:20px;margin-top:20px;text-align:center;
+        .jr-list{list-style:none;margin:0;padding:0}
+        .jr-list li{
+          padding:9px 0 9px 24px;position:relative;line-height:1.55;font-size:15.5px;
+          border-top:1px solid rgba(255,255,255,.08);
         }
-        .jrp-perk-label{font-weight:700;font-size:15px}
-        .jrp-perk-caption{
-          margin-top:4px;font-size:13px;color:var(--bone-dim);line-height:1.5;
+        .jr-list li:first-child{border-top:none;padding-top:0}
+        .jr-list li::before{
+          content:"\\25E4";position:absolute;left:0;top:14px;font-size:9px;color:var(--gold);
         }
-        .jrp-footnote{
-          margin-top:14px;font-size:13px;color:var(--bone-dim);text-align:center;
+        .jr-list li:first-child::before{top:5px}
+        .jr-weekly li strong{color:var(--bone)}
+        .jr-weekly li{color:var(--bone-dim)}
+
+        .jr-side{
+          background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);
+          border-radius:14px;padding:26px;position:sticky;top:96px;
+        }
+        .jr-facts{
+          display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;
+        }
+        .jr-fact-k{
+          font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--bone-dim);
+        }
+        .jr-fact-v{font-weight:700;font-size:17px;margin-top:3px}
+        .jr-table{margin-top:4px}
+        .jr-row{
+          display:flex;justify-content:space-between;gap:12px;padding:9px 0;
+          border-top:1px solid rgba(255,255,255,.1);font-size:15px;
+        }
+        .jr-row span{color:var(--bone-dim)}
+        .jr-note{margin-top:22px;font-size:13.5px;color:var(--bone-dim);line-height:1.5}
+        .jr-side .btn{margin-top:20px;width:100%;justify-content:center}
+
+        /* ── Membership ── */
+        .jr-membership{
+          margin-top:72px;padding:40px 36px;border-radius:16px;
+          border:1px solid var(--gold);background:rgba(255,255,255,.04);
+        }
+        .jr-membership h2{font-size:clamp(26px,3.4vw,38px);margin-top:12px}
+        .jr-membership > p{margin-top:14px;color:var(--bone-dim);max-width:70ch}
+        .jr-perks{
+          display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:28px;
+        }
+        .jr-perk-label{font-weight:700;font-size:15.5px}
+        .jr-perk-caption{margin-top:4px;font-size:13.5px;color:var(--bone-dim);line-height:1.5}
+        .jr-membership .btn{margin-top:28px}
+
+        /* ── Get started ── */
+        .jr-start{margin-top:72px}
+        .jr-steps{
+          display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px;
+        }
+        .jr-step{padding:24px}
+        .jr-step-n{
+          font-family:var(--font-mono);font-size:30px;color:var(--gold);line-height:1;
+        }
+        .jr-step h3{margin-top:12px;font-size:21px}
+        .jr-step p{margin-top:8px;font-size:15px;color:var(--bone-dim)}
+        .jr-contact{
+          margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;
+          font-size:15px;color:var(--bone-dim);
+        }
+        .jr-contact a{color:var(--bone)}
+
+        @media(max-width:960px){
+          .jr-cards,.jr-steps{grid-template-columns:1fr;max-width:520px;margin-inline:auto}
+          .jr-program-body{grid-template-columns:1fr}
+          .jr-side{position:static}
+          .jr-perks{grid-template-columns:1fr 1fr}
+        }
+        @media(max-width:520px){
+          .jr-perks{grid-template-columns:1fr}
+          .jr-membership{padding:30px 22px}
         }
       `}</style>
 
-      <div className="jrp-banner">
-        <span className="eyebrow">{juniorEnrollment.eyebrow}</span>
-        <h2>{juniorEnrollment.headline}</h2>
-        <p>{juniorEnrollment.blurb}</p>
+      {/* ── Pathway overview ── */}
+      <div className="sec-head">
+        <span className="eyebrow">{juniorPathway.eyebrow}</span>
+        <h2>{juniorPathway.headline}</h2>
+        <p>{juniorPathway.intro}</p>
       </div>
 
-      <div className="jrp-cards">
-        {juniorPrograms.map((program) => (
-          <div
-            key={program.id}
-            className={`card jrp-card${program.featured ? " jrp-featured" : ""}`}
-          >
-            {program.featured && program.badge && (
-              <div className="jrp-badge">{program.badge}</div>
-            )}
-            <span className="jrp-pathway">{program.pathway}</span>
-            <h3>{program.name}</h3>
-            {program.description && (
-              <p className="jrp-desc">{program.description}</p>
-            )}
-                 <div className="jrp-price">
-              {program.price && (
-                <>
-                  <div className="jrp-from">{program.priceLabel}</div>
-                  <div className="jrp-amt">
-                    {program.price}
-                    <span className="jrp-per"> {program.per}</span>
-                  </div>
-                </>
-              )}
-              {program.condition && (
-                <div className="jrp-cond">{program.condition}</div>
+      <div className="jr-cards">
+        {juniorPrograms.map((p) => (
+          <div className="card jr-card" key={p.id}>
+            <span className="jr-level">Level {p.level}</span>
+            <h3>{p.name}</h3>
+            <div className="jr-tag">{p.tagline}</div>
+            <p className="jr-desc">{p.summary}</p>
+            <div className="jr-price">
+              {p.price ? (
+                <div className="jr-amt">
+                  {p.price}
+                  <span className="jr-per"> {p.per}</span>
+                </div>
+              ) : (
+                <div className="jr-quote">{p.priceNote}</div>
               )}
             </div>
-            <ul>
-              {program.features.map((feature) => (
-                <li key={feature}>{feature}</li>
-              ))}
-            </ul>
-            <div className="jrp-grow" />
-            <Link href={program.cta.href} className="btn btn-primary">
-              {program.cta.label}
-            </Link>
+            <div className="jr-grow" />
+            <a href={`#${p.id}`} className="btn btn-ghost">
+              Learn more →
+            </a>
           </div>
         ))}
       </div>
+      <p className="jr-pathnote">{juniorPathway.footnote}</p>
 
-      <div className="jrp-strip">
-        <div className="jrp-strip-head">Every Junior Pathway membership includes</div>
-        <div className="jrp-perks">
-          {juniorMembershipPerks.map((perk) => (
-            <div className="jrp-perk" key={perk.label}>
-              <div className="jrp-perk-label">{perk.label}</div>
-              <div className="jrp-perk-caption">{perk.caption}</div>
+      {/* ── Program details ── */}
+      {juniorPrograms.map((p) => (
+        <Program p={p} key={p.id} />
+      ))}
+
+      {/* ── Junior membership ── */}
+      <div className="jr-membership" id="membership">
+        <span className="eyebrow">{juniorMembership.eyebrow}</span>
+        <h2>{juniorMembership.headline}</h2>
+        <p>{juniorMembership.intro}</p>
+        <div className="jr-perks">
+          {juniorMembership.perks.map((perk) => (
+            <div key={perk.label}>
+              <div className="jr-perk-label">{perk.label}</div>
+              <div className="jr-perk-caption">{perk.caption}</div>
             </div>
           ))}
         </div>
+        <Link href={juniorMembership.cta.href} className="btn btn-primary">
+          {juniorMembership.cta.label}
+        </Link>
       </div>
 
-      <p className="jrp-footnote">{juniorProgramsFootnote}</p>
+      {/* ── How to get started ── */}
+      <div className="jr-start" id="get-started">
+        <div className="sec-head">
+          <span className="eyebrow">{juniorGetStarted.eyebrow}</span>
+          <h2>{juniorGetStarted.headline}</h2>
+          <p>{juniorGetStarted.intro}</p>
+        </div>
+        <div className="jr-steps">
+          {juniorGetStarted.steps.map(([t, d], i) => (
+            <div className="card jr-step" key={t}>
+              <div className="jr-step-n">0{i + 1}</div>
+              <h3>{t}</h3>
+              <p>{d}</p>
+            </div>
+          ))}
+        </div>
+        <div className="jr-contact">
+          <a href={`tel:${CLUB.phone.replace(/[^\d+]/g, "")}`}>{CLUB.phone}</a>
+          <a href={`mailto:${CLUB.email}`}>{CLUB.email}</a>
+          <span>{CLUB.address}</span>
+          <span>{CLUB.hours}</span>
+        </div>
+        <Link href={juniorGetStarted.cta.href} className="btn btn-primary" style={{ marginTop: 24 }}>
+          {juniorGetStarted.cta.label}
+        </Link>
+      </div>
     </div>
   );
 }
