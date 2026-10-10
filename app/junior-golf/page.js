@@ -39,7 +39,7 @@ export default function Junior() {
               <p style={{ color: "var(--bone-dim)" }}>{juniorHero.intro}</p>
               <ul>
                 <li>The best coaches in the state, teaching with heart</li>
-                <li>Best-in-class technology: TrackMan, PuttView &amp; SAM PuttStudio</li>
+                <li>Best-in-class technology: TrackMan, PuttView &amp; a dedicated short game area</li>
                 <li>Every lesson comes with follow-up and a practice plan</li>
                 <li>Small groups, so no junior gets lost in the crowd</li>
               </ul>
