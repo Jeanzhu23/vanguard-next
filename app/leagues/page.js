@@ -73,30 +73,42 @@ export default function Leagues() {
         </div>
       </section>
 
-      {/* PGA JR. LEAGUE — COMING SOON */}
+      {/* PGA JR. LEAGUE */}
       <section className="section section-cream">
         <div className="wrap grid-2 feature rev">
           <div className="feature-img" style={{ aspectRatio: "4/5", maxWidth: 460, margin: "0 auto" }}>
             <img src="/img/events/pga-jr-league.jpg" alt="Two junior golfers running down the fairway" />
           </div>
           <div>
-            <span className="tag">Coming soon</span>
+            <span className="tag">Now registering · Ages 13 &amp; under · Space is limited</span>
             <h3 style={{ marginTop: 14 }}>PGA Jr. League at Vanguard.</h3>
             <p style={{ color: "var(--ink-soft)" }}>
-              Team golf for kids, the way it should be: numbered jerseys, a two-person scramble
-              format that takes the pressure off, and a season of matches against other teams.
-              Our Vanguard team will be coached by <b>Preston Renfrow, PGA Golf Coach</b>, and
-              will train and play right here on TrackMan, all year round.
+              Team golf for kids, the way it should be. Players wear numbered jerseys, compete in a
+              relaxed two-person scramble format, and play a season of matches as a team &mdash; so
+              every kid contributes and no one plays alone. Open to boys and girls of all skill
+              levels; no golf experience required. Coached by <b>Preston Renfrow, PGA</b>.
             </p>
             <ul>
-              <li>Boys and girls, all skill levels &mdash; beginners welcome</li>
-              <li>Team scramble format: every player contributes, no one plays alone</li>
-              <li>Weekly practice and matches, led by a PGA coach</li>
-              <li>Indoor season, so the weather never cancels a match</li>
+              <li>12 practices and 6 matches</li>
+              <li>Two custom team jerseys (home and away) with your player&rsquo;s name and number</li>
+              <li>Hat or visor, bag tag, sticker, and drawstring bag</li>
+              <li>Program fee: $570 per player</li>
             </ul>
-            <Link href="/leagues/signup" className="btn btn-dark" style={{ marginTop: 12 }}>
-              Get on the list →
-            </Link>
+            <a href="https://www.pgajrleague.com/junior-league-events/366d47a1-4be6-4027-b4ce-5f6aa7735e4c"
+               target="_blank" rel="noopener" className="btn btn-dark" style={{ marginTop: 12 }}>
+              Register on PGAJrLeague.com →
+            </a>
+            <p style={{ marginTop: 14, fontSize: 14, color: "var(--ink-soft)" }}>
+              Questions? Email Coach Preston at{" "}
+              <a href="mailto:p4pargolf@gmail.com" style={{ color: "var(--green-900)", fontWeight: 600 }}>
+                p4pargolf@gmail.com
+              </a>
+              {" "}&middot;{" "}
+              <a href="https://www.youtube.com/watch?v=2hKDFY6Ssr4" target="_blank" rel="noopener"
+                 style={{ color: "var(--green-900)", fontWeight: 600 }}>
+                Watch what PGA Jr. League is all about →
+              </a>
+            </p>
           </div>
         </div>
       </section>
