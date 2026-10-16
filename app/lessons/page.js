@@ -22,7 +22,7 @@ export default function Lessons() {
       {/* GROUP LESSONS — events marked lesson: true in EVENTS, past dates hidden */}
       {(() => {
         const today = new Date().toISOString().slice(0, 10);
-        const clinics = EVENTS.filter((e) => e.lesson && e.date >= today)
+        const clinics = EVENTS.filter((e) => e.lesson && (e.endDate || e.date) >= today)
           .sort((a, b) => a.date.localeCompare(b.date)).slice(0, 4);
         if (clinics.length === 0) return null;
         return (
