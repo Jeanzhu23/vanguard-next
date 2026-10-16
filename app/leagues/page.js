@@ -20,8 +20,8 @@ export default function Leagues() {
 
       <section className="section section-green">
         <div className="wrap grid-2 feature">
-          <div className="feature-img" style={{ aspectRatio: "2/3", maxWidth: 460, margin: "0 auto" }}>
-            <img src="/img/events/womens-league.jpg" alt="Women's Simulator Golf League — Girls' Night Out" />
+          <div className="feature-img" style={{ aspectRatio: "4/5", maxWidth: 460, margin: "0 auto" }}>
+            <img src="/img/events/womens-league-photo.jpg" alt="Women's league night in a Vanguard TrackMan bay" />
           </div>
           <div>
             <span className="tag">Now enrolling · Starts Monday, Oct 26</span>
