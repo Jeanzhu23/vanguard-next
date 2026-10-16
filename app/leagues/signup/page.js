@@ -16,8 +16,8 @@ export default function LeagueSignup() {
           <h2>Join the next league.</h2>
           <p>
             Tell us a little about yourself and which league you&rsquo;re interested in. We&rsquo;ll
-            reach out with start dates, pricing, and how to lock in your spot. Sign up solo and
-            we&rsquo;ll match you with a partner.
+            reach out with start dates, pricing, and how to lock in your spot. Leagues are played in
+            two-person teams &mdash; two members, or a member and a guest.
           </p>
         </div>
 
@@ -51,13 +51,18 @@ export default function LeagueSignup() {
             <div>
               <label htmlFor="lteam">Team</label>
               <select id="lteam" name="team">
-                <option>Sign me up solo &mdash; match me with a partner</option>
-                <option>I have a partner</option>
+                <option>Member + member</option>
+                <option>Member + guest</option>
+                <option>I need a teammate</option>
               </select>
             </div>
           </div>
           <div>
-            <label htmlFor="lmsg">Partner name, preferred nights, or anything else</label>
+            <label htmlFor="lpartner">Teammate&rsquo;s name</label>
+            <input id="lpartner" type="text" name="teammate" placeholder="Leave blank if you still need one" />
+          </div>
+          <div>
+            <label htmlFor="lmsg">Preferred nights, or anything else</label>
             <textarea id="lmsg" name="message" placeholder="Optional"></textarea>
           </div>
 

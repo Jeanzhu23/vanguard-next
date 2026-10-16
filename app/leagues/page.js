@@ -55,19 +55,19 @@ export default function Leagues() {
             <span className="tag">Coming soon · Launching this season</span>
             <h3 style={{ marginTop: 14 }}>Men&rsquo;s League. Bragging rights, every week.</h3>
             <p style={{ color: "var(--bone-dim)" }}>
-              Grab a partner, pick your night, and go to war on TrackMan. Handicaps level the field,
+              Pick your teammate, pick your night, and go to war on TrackMan. Handicaps level the field,
               so the scratch player and the weekend hack both have a real shot at the top of the board.
               Weekly prizes, a live leaderboard, and a season-ending championship with your name on
               the line. Cold drinks, loud bays, and a lot of trash talk.
             </p>
             <ul>
-              <li>2-person teams &mdash; sign up solo and we&rsquo;ll match you</li>
+              <li>2-person teams &mdash; two members, or a member and a guest</li>
               <li>Net &amp; Gross leaderboards: your best weeks count</li>
               <li>Weekly prizes, plus the Vanguard Championship to close the season</li>
               <li>Open 24/7, so make-up rounds fit your schedule</li>
             </ul>
             <Link href="/leagues/signup" className="btn btn-primary" style={{ marginTop: 12 }}>
-              Get on the list →
+              Sign up your team →
             </Link>
           </div>
         </div>
