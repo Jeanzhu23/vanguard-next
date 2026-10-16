@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { WHOOSH, COACHES } from "@/lib/site";
+import { WHOOSH, COACHES, EVENTS } from "@/lib/site";
 
 export const metadata = {
   title: "Lessons & Coaching",
@@ -18,6 +18,56 @@ export default function Lessons() {
           <p>Private lessons with Massachusetts&rsquo; top-ranked coaches. Every session is measured on TrackMan, so you leave with real numbers and a clear plan.</p>
         </div>
       </section>
+
+      {/* GROUP LESSONS — events marked lesson: true in EVENTS, past dates hidden */}
+      {(() => {
+        const today = new Date().toISOString().slice(0, 10);
+        const clinics = EVENTS.filter((e) => e.lesson && e.date >= today)
+          .sort((a, b) => a.date.localeCompare(b.date)).slice(0, 4);
+        if (clinics.length === 0) return null;
+        return (
+          <section className="section section-cream">
+            <div className="wrap">
+              <div className="sec-head">
+                <span className="eyebrow">Clinics</span>
+                <h2>One focus. One evening. Small group.</h2>
+                <p>Small-group coaching on one part of the game, for adults and juniors. A great first step before private lessons.</p>
+              </div>
+              <div className="ev-grid">
+                {clinics.map((e) => {
+                  const d = new Date(e.date + "T00:00:00");
+                  const external = e.link && e.link.startsWith("http");
+                  return (
+                    <article key={e.date + e.title} className="ev-card">
+                      <div className="ev-body">
+                        <div className="ev-when">
+                          <div className="ev-date">
+                            <span className="ev-mon">{d.toLocaleString("en-US", { month: "short" })}</span>
+                            <span className="ev-day">{d.getDate()}</span>
+                          </div>
+                          <div className="ev-time">{e.time}</div>
+                        </div>
+                        <h3>{e.title}</h3>
+                        <p>{e.desc}</p>
+                        {e.link && (
+                          <Link href={e.link} className="ev-link"
+                            target={external ? "_blank" : undefined}
+                            rel={external ? "noopener" : undefined}>
+                            {e.linkLabel || "Register →"}
+                          </Link>
+                        )}
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+              <p style={{ marginTop: 28, fontSize: 15, color: "var(--ink-soft)" }}>
+                <Link href="/events" style={{ color: "var(--gold)", fontWeight: 600 }}>See all upcoming events →</Link>
+              </p>
+            </div>
+          </section>
+        );
+      })()}
 
       <section className="section section-dark">
         <div className="wrap">
