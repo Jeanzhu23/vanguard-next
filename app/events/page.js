@@ -71,7 +71,7 @@ export default function Events() {
             </p>
           ) : (
             <div className="ev-grid">
-              {[...EVENTS].sort((a, b) => a.date.localeCompare(b.date)).map((e) => {
+              {[...EVENTS].filter((e) => (e.endDate || e.date) >= new Date().toISOString().slice(0, 10)).sort((a, b) => a.date.localeCompare(b.date)).map((e) => {
                 const d = new Date(e.date + "T00:00:00");
                 const month = d.toLocaleString("en-US", { month: "short" });
                 const day = d.getDate();
