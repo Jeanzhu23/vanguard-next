@@ -77,7 +77,7 @@ export default function Leagues() {
       <section className="section section-cream">
         <div className="wrap grid-2 feature rev">
           <div className="feature-img" style={{ aspectRatio: "4/5", maxWidth: 460, margin: "0 auto" }}>
-            <img src="/img/events/pga-jr-league.jpg" alt="Two junior golfers running down the fairway" />
+            <img src="/img/events/pga-jr-league.jpg" alt="PGA Jr. League players in a Vanguard TrackMan bay" />
           </div>
           <div>
             <span className="tag">Now registering · Ages 13 &amp; under · Space is limited</span>
