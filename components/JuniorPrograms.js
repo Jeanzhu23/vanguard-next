@@ -73,7 +73,7 @@ function Program({ p }) {
 
           {p.weekly && (
             <div>
-              <div className="jr-sub">Every week</div>
+              <div className="jr-sub">{p.weeklyTitle || "Every week"}</div>
               <ul className="jr-list jr-weekly">
                 {p.weekly.map(([t, d]) => (
                   <li key={t}>
