@@ -101,6 +101,9 @@ export default function TheClub() {
               <li>Mobility for a fuller rotation</li>
               <li>Programs for juniors and adults alike</li>
             </ul>
+            <Link href="/fitness" className="btn btn-dark" style={{ marginTop: 20 }}>
+              See programs &amp; pricing →
+            </Link>
           </div>
         </div>
         <div className="wrap" style={{ marginTop: 56 }}>
