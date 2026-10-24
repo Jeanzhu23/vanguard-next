@@ -18,6 +18,24 @@ const head = {
   textAlign: "left",
 };
 
+function ScheduleList({ rows }) {
+  return (
+    <div className="lb" style={{ background: "var(--green-800)", borderColor: "rgba(246,242,234,.12)" }}>
+      {rows.map((r, i) => (
+        <div
+          key={i}
+          className="lb-row"
+          style={{ gridTemplateColumns: "110px 90px 1fr", background: "transparent", borderColor: "rgba(246,242,234,.1)" }}
+        >
+          <span style={{ fontFamily: "var(--font-display)", fontSize: 18, color: "var(--bone)" }}>{r.day}</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--gold-bright)" }}>{r.time}</span>
+          <span style={{ fontSize: 14.5, color: "var(--bone-dim)" }}>{r.group}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Fitness() {
   const F = FITNESS;
   return (
@@ -155,20 +173,17 @@ export default function Fitness() {
             <span className="eyebrow">Schedule</span>
             <h2>Opening group times.</h2>
             <p>{F.schedule.intro}</p>
-            <p style={{ fontSize: 15, color: "var(--slate)" }}>{F.schedule.note}</p>
+            <div className="card" style={{ marginTop: 28, borderLeft: "3px solid var(--gold)" }}>
+              <span className="eyebrow">Private training</span>
+              <h3 style={{ margin: "10px 0 6px", fontSize: 22 }}>{F.schedule.oneOnOne.title}</h3>
+              <p>{F.schedule.oneOnOne.copy}</p>
+            </div>
           </div>
-          <div className="lb" style={{ background: "var(--green-800)", borderColor: "rgba(246,242,234,.12)" }}>
-            {F.schedule.rows.map((r, i) => (
-              <div
-                key={i}
-                className="lb-row"
-                style={{ gridTemplateColumns: "110px 90px 1fr", background: "transparent", borderColor: "rgba(246,242,234,.1)" }}
-              >
-                <span style={{ fontFamily: "var(--font-display)", fontSize: 18, color: "var(--bone)" }}>{r.day}</span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--gold-bright)" }}>{r.time}</span>
-                <span style={{ fontSize: 14.5, color: "var(--bone-dim)" }}>{r.group}</span>
-              </div>
-            ))}
+          <div>
+            <span className="tag" style={{ marginBottom: 12 }}>Opening schedule · From Nov 2</span>
+            <ScheduleList rows={F.schedule.rows} />
+            <span className="tag" style={{ margin: "32px 0 12px" }}>{F.schedule.upcomingTitle}</span>
+            <ScheduleList rows={F.schedule.upcoming} />
           </div>
         </div>
       </section>
