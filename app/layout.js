@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL("https://vanguardgolfclub.com"),
@@ -32,6 +33,11 @@ export default function RootLayout({ children }) {
         <Header />
         <main>{children}</main>
         <Footer />
+        {/* Tidio live chat + AI assistant */}
+        <Script
+          src="https://code.tidio.co/lf5qi6zzep5dch3icdkfp3dbsqn1wfzg.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
