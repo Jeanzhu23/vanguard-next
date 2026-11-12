@@ -442,3 +442,4 @@ em{font-style:italic;color:var(--gold)}
   .cal-chip{width:7px;height:7px;padding:0;border-radius:50%}
   .cal-chip-text{display:none}
 }
+.ev-sessions{display:flex;flex-wrap:wrap;gap:4px 18px}

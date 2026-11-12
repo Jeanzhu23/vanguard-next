@@ -104,15 +104,17 @@ export default function EventCalendar({ events }) {
         {selectedEvents.length === 0 ? (
           <p className="cal-detail-empty">Nothing scheduled — pick a highlighted day.</p>
         ) : selectedEvents.map((ev) => {
-          const external = ev.link && ev.link.startsWith("http");
+          const session = ev.sessions && ev.sessions.find((s) => s.date === selected);
+          const link = session ? session.link : ev.link;
+          const external = link && link.startsWith("http");
           return (
             <div key={ev.title} className="cal-detail-item">
               <span className={`cal-dot ${TAG_CLASS[ev.tag] || ""}`} />
               <div>
                 <div className="cal-detail-title">{ev.title}</div>
                 <div className="cal-detail-time">{ev.dayTime || ev.time}</div>
-                {ev.link && (
-                  <a href={ev.link} className="ev-link" target={external ? "_blank" : undefined} rel={external ? "noopener" : undefined}>
+                {link && (
+                  <a href={link} className="ev-link" target={external ? "_blank" : undefined} rel={external ? "noopener" : undefined}>
                     {ev.linkLabel || "Register →"}
                   </a>
                 )}

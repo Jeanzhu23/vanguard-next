@@ -49,7 +49,15 @@ export default function Lessons() {
                         </div>
                         <h3>{e.title}</h3>
                         <p>{e.desc}</p>
-                        {e.link && (
+                        {e.sessions ? (
+                          <div className="ev-sessions">
+                            {e.sessions.filter((s) => s.date >= today).map((s) => (
+                              <a key={s.date} href={s.link} className="ev-link" target="_blank" rel="noopener">
+                                {s.label} →
+                              </a>
+                            ))}
+                          </div>
+                        ) : e.link && (
                           <Link href={e.link} className="ev-link"
                             target={external ? "_blank" : undefined}
                             rel={external ? "noopener" : undefined}>

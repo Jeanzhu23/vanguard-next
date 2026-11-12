@@ -18,6 +18,7 @@ const PKGS = [
 ];
 
 export default function Events() {
+  const today = new Date().toISOString().slice(0, 10);
   return (
     <>
       <section className="page-hero">
@@ -74,7 +75,7 @@ export default function Events() {
             </p>
           ) : (
             <div className="ev-grid">
-              {[...EVENTS].filter((e) => (e.endDate || e.date) >= new Date().toISOString().slice(0, 10)).sort((a, b) => a.date.localeCompare(b.date)).map((e) => {
+              {[...EVENTS].filter((e) => (e.endDate || e.date) >= today).sort((a, b) => a.date.localeCompare(b.date)).map((e) => {
                 const d = new Date(e.date + "T00:00:00");
                 const month = d.toLocaleString("en-US", { month: "short" });
                 const day = d.getDate();
@@ -101,7 +102,15 @@ export default function Events() {
                       </div>
                       <h3>{e.title}</h3>
                       <p>{e.desc}</p>
-                      {e.link && (
+                      {e.sessions ? (
+                        <div className="ev-sessions">
+                          {e.sessions.filter((s) => s.date >= today).map((s) => (
+                            <a key={s.date} href={s.link} className="ev-link" target="_blank" rel="noopener">
+                              {s.label} →
+                            </a>
+                          ))}
+                        </div>
+                      ) : e.link && (
                         <Link href={e.link} className="ev-link"
                           target={external ? "_blank" : undefined}
                           rel={external ? "noopener" : undefined}>
