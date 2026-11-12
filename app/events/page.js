@@ -102,7 +102,7 @@ export default function Events() {
                       </div>
                       <h3>{e.title}</h3>
                       <p>{e.desc}</p>
-                      {e.sessions ? (
+                      {e.sessions && !e.link ? (
                         <div className="ev-sessions">
                           {e.sessions.filter((s) => s.date >= today).map((s) => (
                             <a key={s.date} href={s.link} className="ev-link" target="_blank" rel="noopener">

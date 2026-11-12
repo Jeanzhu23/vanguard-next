@@ -112,7 +112,7 @@ export default function EventCalendar({ events }) {
               <span className={`cal-dot ${TAG_CLASS[ev.tag] || ""}`} />
               <div>
                 <div className="cal-detail-title">{ev.title}</div>
-                <div className="cal-detail-time">{ev.dayTime || ev.time}</div>
+                <div className="cal-detail-time">{(session && session.time) || ev.dayTime || ev.time}</div>
                 {link && (
                   <a href={link} className="ev-link" target={external ? "_blank" : undefined} rel={external ? "noopener" : undefined}>
                     {ev.linkLabel || "Register →"}
