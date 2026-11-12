@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { EVENTS } from "@/lib/site";
+import EventCalendar from "@/components/EventCalendar";
 
 export const metadata = {
   title: "Corporate Events & Private Parties",
@@ -63,6 +64,8 @@ export default function Events() {
             <h2>Upcoming at Vanguard.</h2>
             <p>Leagues, tournaments, clinics, and member socials — there&rsquo;s always something happening. Members get first access.</p>
           </div>
+
+          {EVENTS.length > 0 && <EventCalendar events={EVENTS} />}
 
           {EVENTS.length === 0 ? (
             <p style={{ color: "var(--ink-soft)" }}>
